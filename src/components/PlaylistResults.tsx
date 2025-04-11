@@ -26,32 +26,32 @@ const PlaylistResults: React.FC<PlaylistResultsProps> = ({ playlistNames }) => {
 
   // Enhanced array of aesthetic gradient backgrounds for Gen-Z vibes
   const gradients = [
-    "from-violet-500 to-purple-800",
-    "from-pink-500 to-purple-800",
-    "from-indigo-500 to-cyan-800",
-    "from-fuchsia-500 to-indigo-800",
-    "from-amber-500 to-pink-800",
-    "from-green-500 to-blue-800",
-    "from-rose-500 to-indigo-800",
-    "from-blue-500 to-violet-800",
+    "from-violet-500 to-fuchsia-400",
+    "from-rose-400 to-orange-300",
+    "from-cyan-400 to-blue-500", 
+    "from-emerald-400 to-cyan-400",
+    "from-pink-500 to-rose-300",
+    "from-amber-300 to-pink-500",
+    "from-indigo-600 to-violet-400",
+    "from-teal-300 to-emerald-500",
   ];
 
   return (
     <div className="space-y-4">
-      <h2 className="text-xl font-semibold mb-4">Your Playlist Names</h2>
+      <h2 className="text-xl font-bold tracking-tight mb-4">Your Vibe Collection ✨</h2>
       
       <div className="grid gap-4 grid-cols-1 sm:grid-cols-2">
         {playlistNames.map((name, index) => (
           <Card 
             key={index} 
-            className={`playlist-card overflow-hidden bg-gradient-to-br ${gradients[index % gradients.length]} border-none shadow-md shadow-accent/10 hover:scale-[1.02] transition-all duration-200`}
+            className={`playlist-card overflow-hidden bg-gradient-to-br ${gradients[index % gradients.length]} border-none shadow-lg shadow-accent/20 hover:scale-[1.03] transition-all duration-200`}
           >
             <CardContent className="p-4 flex items-center justify-between">
               <div className="flex items-center">
-                <div className="w-8 h-8 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center mr-3 animate-pulse-slow">
+                <div className="w-9 h-9 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mr-3 animate-pulse">
                   <Music className="h-4 w-4 text-white" />
                 </div>
-                <span className="text-sm font-medium text-white">{name}</span>
+                <span className="text-sm font-medium text-white drop-shadow-md">{name}</span>
               </div>
               <Button
                 variant="ghost"

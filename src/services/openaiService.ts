@@ -9,30 +9,41 @@ export const generatePlaylistNames = async (mood: string, genre: string, theme: 
     // Return enhanced Gen-Z style placeholder data since we don't have a real API key
     console.log("Using placeholder data since no API key is provided");
     return [
-      `${mood} ${genre} vibez ~ ${theme} edition`,
-      `${theme} era // ${mood} ${genre} collective`,
-      `not ur average ${genre} :: ${mood} ${theme} feels`,
-      `${mood} ${genre} maincharacter energy (${theme})`,
-      `${theme} dreamcore + ${mood} ${genre} therapy`
+      `main character ${mood} era (${genre} edition)`,
+      `${theme} therapy but make it ${genre}`,
+      `not ur basic ${genre} girl :: ${mood} ${theme} hours`,
+      `caught in my ${mood} feels <${genre}>${theme}`,
+      `${genre} brainrot // ${theme} szn`
     ];
   }
 
-  // Construct an improved Gen-Z focused prompt
-  const prompt = `You're a cool Gen-Z music lover and playlist curator for Spotify. Based on the mood, genre, and theme provided, generate 5 unique, catchy, aesthetic playlist names that sound like something a real Gen-Z would name their playlist.
+  // Construct a highly specific Gen-Z focused prompt
+  const prompt = `As an extremely online, Gen-Z playlist creator for Spotify, create 5 unique playlist names that Gen-Z would actually use. 
 
-Avoid generic names like 'Sad Jazz Vibes.' Think more like 'Party Girl Anthems,' 'Inner Monologue,' 'Heartbreak Hotel,' or 'Main Character Energy.'
+Names should use elements like:
+- lowercase aesthetic
+- special characters (~ // :: + ✨ ♡)
+- internet slang (core, vibe, era, brainrot, szn)
+- nostalgic concepts
+- ironic or self-aware phrases
+- very emotional but casual vibes
 
-Use modern lingo, wordplay, emotional vibes, and aesthetic phrases.
+EXAMPLES OF GREAT NAMES:
+- "nobody knows i listen to this"
+- "she's so real for that"
+- "crying in the bathroom at a party"
+- "scrolling till 3am"
+- "pov: main character energy"
+- "that one song that gets me"
+- "romanticizing my life"
+
+DO NOT CREATE GENERIC NAMES OR USE OUTDATED PHRASES!
 
 Mood: ${mood}
 Genre: ${genre}
 Theme: ${theme}
 
-For context:
-- Partying playlists should sound like "Hot Girl Rave", "Glitter in the Dark", "Shots & Sadness"
-- Driving playlists should sound like "Dashboard Confessions", "Neon Highways", "Speed Limit: Heartbreak"
-
-Return ONLY the 5 playlist names as a JSON array of strings without any additional text, numbers, or explanation.`;
+Return ONLY the 5 playlist names as a JSON array of strings.`;
 
   let retries = 0;
   
@@ -49,14 +60,14 @@ Return ONLY the 5 playlist names as a JSON array of strings without any addition
           messages: [
             {
               role: "system",
-              content: "You are a creative assistant that specializes in generating Gen-Z aesthetic playlist names with unique stylization. Only return a JSON array of 5 playlist name strings without any additional text."
+              content: "You are an expert at creating Gen-Z aesthetic playlist names that are extremely authentic, trendy, and current. You specifically know what playlists on Spotify and TikTok are named in 2025. ONLY return a JSON array with 5 names."
             },
             {
               role: "user",
               content: prompt
             }
           ],
-          temperature: 0.9,
+          temperature: 1.0, // Increased for more creativity
           max_tokens: 200
         })
       });
