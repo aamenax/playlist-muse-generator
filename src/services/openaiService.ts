@@ -18,20 +18,21 @@ export const generatePlaylistNames = async (mood: string, genre: string, theme: 
   }
 
   // Construct an improved Gen-Z focused prompt
-  const prompt = `Generate 5 extremely unique and aesthetic playlist names for a ${mood} playlist in the ${genre} genre, themed around ${theme}. 
+  const prompt = `You're a cool Gen-Z music lover and playlist curator for Spotify. Based on the mood, genre, and theme provided, generate 5 unique, catchy, aesthetic playlist names that sound like something a real Gen-Z would name their playlist.
 
-The names should be creative, modern, and appeal specifically to Gen-Z aesthetic. 
+Avoid generic names like 'Sad Jazz Vibes.' Think more like 'Party Girl Anthems,' 'Inner Monologue,' 'Heartbreak Hotel,' or 'Main Character Energy.'
 
-Use stylistic elements like:
-- Lowercase styling
-- Special characters (~ // :: + *)
-- Emotional or evocative phrases
-- Internet slang and current Gen-Z terminology
-- Nostalgic or dreamcore concepts
-- Unexpected word combinations
-- Parentheses or brackets for artistic effect
+Use modern lingo, wordplay, emotional vibes, and aesthetic phrases.
 
-Return ONLY the 5 names as a JSON array of strings without any additional text or explanation.`;
+Mood: ${mood}
+Genre: ${genre}
+Theme: ${theme}
+
+For context:
+- Partying playlists should sound like "Hot Girl Rave", "Glitter in the Dark", "Shots & Sadness"
+- Driving playlists should sound like "Dashboard Confessions", "Neon Highways", "Speed Limit: Heartbreak"
+
+Return ONLY the 5 playlist names as a JSON array of strings without any additional text, numbers, or explanation.`;
 
   let retries = 0;
   

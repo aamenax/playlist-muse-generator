@@ -24,13 +24,16 @@ const PlaylistResults: React.FC<PlaylistResultsProps> = ({ playlistNames }) => {
     });
   };
 
-  // Randomly assign one of these colors to each playlist card
+  // Enhanced array of aesthetic gradient backgrounds for Gen-Z vibes
   const gradients = [
     "from-violet-500 to-purple-800",
     "from-pink-500 to-purple-800",
     "from-indigo-500 to-cyan-800",
     "from-fuchsia-500 to-indigo-800",
     "from-amber-500 to-pink-800",
+    "from-green-500 to-blue-800",
+    "from-rose-500 to-indigo-800",
+    "from-blue-500 to-violet-800",
   ];
 
   return (
@@ -41,11 +44,11 @@ const PlaylistResults: React.FC<PlaylistResultsProps> = ({ playlistNames }) => {
         {playlistNames.map((name, index) => (
           <Card 
             key={index} 
-            className={`playlist-card overflow-hidden bg-gradient-to-br ${gradients[index % gradients.length]} border-none shadow-md shadow-accent/10`}
+            className={`playlist-card overflow-hidden bg-gradient-to-br ${gradients[index % gradients.length]} border-none shadow-md shadow-accent/10 hover:scale-[1.02] transition-all duration-200`}
           >
             <CardContent className="p-4 flex items-center justify-between">
               <div className="flex items-center">
-                <div className="w-8 h-8 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center mr-3">
+                <div className="w-8 h-8 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center mr-3 animate-pulse-slow">
                   <Music className="h-4 w-4 text-white" />
                 </div>
                 <span className="text-sm font-medium text-white">{name}</span>
