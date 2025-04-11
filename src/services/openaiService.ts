@@ -6,19 +6,32 @@ const RETRY_DELAY = 1000;
 
 export const generatePlaylistNames = async (mood: string, genre: string, theme: string): Promise<string[]> => {
   if (!API_KEY) {
-    // Return placeholder data for demo since we don't have a real API key
+    // Return enhanced Gen-Z style placeholder data since we don't have a real API key
     console.log("Using placeholder data since no API key is provided");
     return [
-      `${mood.charAt(0).toUpperCase() + mood.slice(1)} ${genre} Rhythms: ${theme}`,
-      `${theme.charAt(0).toUpperCase() + theme.slice(1)} Waves in ${genre}`,
-      `${mood.charAt(0).toUpperCase() + mood.slice(1)} Hours: ${theme} Sessions`,
-      `${genre.charAt(0).toUpperCase() + genre.slice(1)} Dreams & ${theme} Memories`,
-      `${theme.charAt(0).toUpperCase() + theme.slice(1)} Vibes: ${mood} ${genre} Mix`
+      `${mood} ${genre} vibez ~ ${theme} edition`,
+      `${theme} era // ${mood} ${genre} collective`,
+      `not ur average ${genre} :: ${mood} ${theme} feels`,
+      `${mood} ${genre} maincharacter energy (${theme})`,
+      `${theme} dreamcore + ${mood} ${genre} therapy`
     ];
   }
 
-  // Construct the prompt
-  const prompt = `Generate 5 unique and aesthetic playlist names for a ${mood} playlist in the ${genre} genre, themed around ${theme}. The names should be creative, catchy, and suitable for music streaming platforms. Return ONLY the 5 names as a JSON array of strings without any additional text or explanation.`;
+  // Construct an improved Gen-Z focused prompt
+  const prompt = `Generate 5 extremely unique and aesthetic playlist names for a ${mood} playlist in the ${genre} genre, themed around ${theme}. 
+
+The names should be creative, modern, and appeal specifically to Gen-Z aesthetic. 
+
+Use stylistic elements like:
+- Lowercase styling
+- Special characters (~ // :: + *)
+- Emotional or evocative phrases
+- Internet slang and current Gen-Z terminology
+- Nostalgic or dreamcore concepts
+- Unexpected word combinations
+- Parentheses or brackets for artistic effect
+
+Return ONLY the 5 names as a JSON array of strings without any additional text or explanation.`;
 
   let retries = 0;
   
@@ -35,14 +48,14 @@ export const generatePlaylistNames = async (mood: string, genre: string, theme: 
           messages: [
             {
               role: "system",
-              content: "You are a creative assistant that generates aesthetic playlist names. Only return a JSON array of 5 playlist name strings without any additional text."
+              content: "You are a creative assistant that specializes in generating Gen-Z aesthetic playlist names with unique stylization. Only return a JSON array of 5 playlist name strings without any additional text."
             },
             {
               role: "user",
               content: prompt
             }
           ],
-          temperature: 0.8,
+          temperature: 0.9,
           max_tokens: 200
         })
       });
